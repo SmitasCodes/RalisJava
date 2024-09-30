@@ -3,6 +3,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Ralis {
@@ -44,7 +45,11 @@ public class Ralis {
     // 1. Saraso spausdinimas
     // ##########################
     public static void sarasoSpausdinimas() {
-        System.out.println("Works");
+        ArrayList<Masina> masinuSarasas = Masina.gautiMasinuSarasa();
+        for (Masina masina : masinuSarasas) {
+            System.out.println(masina);
+        }
+
     }
 
 }
@@ -55,11 +60,26 @@ class Masina {
     private double turis;
     private int maxGreitis;
 
+    private static ArrayList<Masina> masinuSarasas = new ArrayList<>();
+
     // Declare fields for the Masinos class
     public Masina(String marke, String modelis, double turis, int maxGreitis) {
         this.marke = marke;
         this.modelis = modelis;
         this.turis = turis;
         this.maxGreitis = maxGreitis;
+        masinuSarasas.add(this);
+    }
+
+    public static ArrayList<Masina> gautiMasinuSarasa() {
+        return masinuSarasas;
+    }
+
+    // Pakeiciamas toString metodas, kad butu gaunama informacija apie automobilius
+    // is objektu
+    @Override
+    public String toString() {
+        return String.format("Marke: %s, Modelis: %s, Turis: %.1fL, Max Greitis: %d km/h",
+                marke, modelis, turis, maxGreitis);
     }
 }
