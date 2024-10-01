@@ -33,6 +33,8 @@ public class Ralis {
                 break;
             case 4:
                 paieskaMarkeModelisGreitis();
+            case 5:
+                sarasoRikiavimas();
         }
     }
 
@@ -73,13 +75,13 @@ public class Ralis {
         double bendrasTuris = 0;
 
         for (Masina masina : masinuSarasas) {
-            bendrasTuris += masina.turis;
+            bendrasTuris += masina.getTuris();
         }
 
         double vidutinisTuris = (double) bendrasTuris / kiekis;
         DecimalFormat skaiciausFormatas = new DecimalFormat("#.00");
 
-        System.out.println("Bendras visu masinu vidutinis turis: " + skaiciausFormatas.format(vidutinisTuris) + "L");
+        System.out.println("Bendras visu masinu vidutinis turis yra3: " + skaiciausFormatas.format(vidutinisTuris) + "L");
     }
 
     // ##########################
@@ -94,10 +96,8 @@ public class Ralis {
         ArrayList<Masina> atrinktosMasinos = new ArrayList<>();
 
         for (Masina masina : masinuSarasas) {
-            if (masina.marke.contains(masinosMarke)) {
-                if (masina.modelis.contains(masinosModelis)) {
-                    atrinktosMasinos.add(masina);
-                }
+            if (masina.getMarke().contains(masinosMarke) && masina.getModelis().contains(masinosModelis)) {
+                atrinktosMasinos.add(masina);
             }
         }
 
@@ -124,7 +124,7 @@ public class Ralis {
         int maxGreitis = Integer.valueOf(scanner.nextLine());
 
         for (Masina masina : atrinktosMasinos) {
-            if (maxGreitis == masina.maxGreitis) {
+            if (masina.getMaxGreitis() == maxGreitis) {
                 atrinktosMasinosSuGreiciu.add(masina);
             }
         }
@@ -138,13 +138,19 @@ public class Ralis {
         }
     }
 
+    // ##########################
+    // 5. Saraso rikiavimas pagal marke ir maksimalu greiti
+    // ##########################
+    public static void sarasoRikiavimas() {
+
+    }
 }
 
 class Masina {
-    public String marke;
-    public String modelis;
-    public double turis;
-    public int maxGreitis;
+    private String marke;
+    private String modelis;
+    private double turis;
+    private int maxGreitis;
 
     private static ArrayList<Masina> masinuSarasas = new ArrayList<>();
 
@@ -155,6 +161,22 @@ class Masina {
         this.turis = turis;
         this.maxGreitis = maxGreitis;
         masinuSarasas.add(this);
+    }
+
+    public String getMarke() {
+        return marke;
+    }
+
+    public String getModelis() {
+        return modelis;
+    }
+
+    public int getMaxGreitis() {
+        return maxGreitis;
+    }
+
+    public double getTuris() {
+        return turis;
     }
 
     public static ArrayList<Masina> gautiMasinuSarasa() {
