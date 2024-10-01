@@ -13,6 +13,10 @@ public class Ralis {
     public static void main(String[] args) {
 
         failoNuskaitymas();
+        menu();
+    }
+
+    public static void menu() {
         System.out.println("Sveiki atvyke y \"Ralis\" programa!");
         System.out.println("Programos funkciju meniu yra sis:");
         System.out.println("1: Masinu saraso nuskaitymas ir parodymas.");
@@ -84,7 +88,14 @@ public class Ralis {
         DecimalFormat skaiciausFormatas = new DecimalFormat("#.00");
 
         System.out
-                .println("Bendras visu masinu vidutinis turis yra3: " + skaiciausFormatas.format(vidutinisTuris) + "L");
+                .println("Bendras visu masinu vidutinis turis yra: " + skaiciausFormatas.format(vidutinisTuris) + "L");
+
+        System.out.println("Norint sugryzti i menu spauskite - y");
+        System.out.println("Programos sustabdymui spauskite - n");
+        String ivestis = scanner.nextLine();
+        if (ivestis.equals("y")) {
+            menu();
+        }
     }
 
     // ##########################
@@ -108,6 +119,14 @@ public class Ralis {
             if (!atrinktosMasinos.isEmpty()) {
                 for (Masina masina : atrinktosMasinos) {
                     System.out.println(masina);
+
+                    System.out.println("Norint sugryzti i menu spauskite - y");
+                    System.out.println("Programos sustabdymui spauskite - n");
+                    System.out.println("Programos sustabdymui spauskite - n");
+                    String ivestis = scanner.nextLine();
+                    if (ivestis.equals("y")) {
+                        menu();
+                    }
                 }
             } else {
                 System.out.println("Nera tokios masinos pagal ivesta marke ir modeli!");
@@ -146,7 +165,7 @@ public class Ralis {
     // ##########################
     public static void sarasoRikiavimas() {
         masinuSarasas.sort((m1, m2) -> {
-            int markeCompare = m2.getMarke().compareTo(m1.getMarke()); 
+            int markeCompare = m2.getMarke().compareTo(m1.getMarke());
             if (markeCompare != 0) {
                 return markeCompare;
             } else {
@@ -161,4 +180,3 @@ public class Ralis {
     }
 
 }
-
