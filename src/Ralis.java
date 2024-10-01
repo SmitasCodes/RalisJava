@@ -64,7 +64,6 @@ public class Ralis {
         for (Masina masina : masinuSarasas) {
             System.out.println(masina);
         }
-
     }
 
     // ##########################
@@ -81,7 +80,8 @@ public class Ralis {
         double vidutinisTuris = (double) bendrasTuris / kiekis;
         DecimalFormat skaiciausFormatas = new DecimalFormat("#.00");
 
-        System.out.println("Bendras visu masinu vidutinis turis yra3: " + skaiciausFormatas.format(vidutinisTuris) + "L");
+        System.out
+                .println("Bendras visu masinu vidutinis turis yra3: " + skaiciausFormatas.format(vidutinisTuris) + "L");
     }
 
     // ##########################
@@ -142,8 +142,21 @@ public class Ralis {
     // 5. Saraso rikiavimas pagal marke ir maksimalu greiti
     // ##########################
     public static void sarasoRikiavimas() {
+        masinuSarasas.sort((m1, m2) -> {
+            int markeCompare = m2.getMarke().compareTo(m1.getMarke()); 
+            if (markeCompare != 0) {
+                return markeCompare;
+            } else {
+                return Integer.compare(m2.getMaxGreitis(), m1.getMaxGreitis());
+            }
+        });
 
+        System.out.println("Sarasas isrikiuotas pagal marke ir maksimalu greiti:");
+        for (Masina masina : masinuSarasas) {
+            System.out.println(masina);
+        }
     }
+
 }
 
 class Masina {
