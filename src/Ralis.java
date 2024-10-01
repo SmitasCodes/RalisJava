@@ -11,14 +11,13 @@ public class Ralis {
     static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-
+        System.out.println("Sveiki atvyke y \"Ralis\" programa!");
         failoNuskaitymas();
         menu();
     }
 
     public static void menu() {
-        System.out.println("Sveiki atvyke y \"Ralis\" programa!");
-        System.out.println("Programos funkciju meniu yra sis:");
+        System.out.println("\nProgramos funkciju meniu yra sis:");
         System.out.println("1: Masinu saraso nuskaitymas ir parodymas.");
         System.out.println("2: Vidutinis visu automobiliu varikliu turio skaiciavimas.");
         System.out.println("3: Paieska pagal marke ir modeli.");
@@ -68,8 +67,17 @@ public class Ralis {
     // 1. Saraso spausdinimas
     // ##########################
     public static void sarasoSpausdinimas() {
+        System.out.println("");
         for (Masina masina : masinuSarasas) {
             System.out.println(masina);
+        }
+        System.out.println("");
+
+        System.out.println("Norint sugryzti i menu spauskite - y");
+        System.out.println("Programos sustabdymui spauskite - n");
+        String ivestis = scanner.nextLine();
+        if (ivestis.equals("y")) {
+            menu();
         }
     }
 
@@ -88,7 +96,7 @@ public class Ralis {
         DecimalFormat skaiciausFormatas = new DecimalFormat("#.00");
 
         System.out
-                .println("Bendras visu masinu vidutinis turis yra: " + skaiciausFormatas.format(vidutinisTuris) + "L");
+                .println("\nBendras visu masinu vidutinis turis yra: " + skaiciausFormatas.format(vidutinisTuris) + "l\n");
 
         System.out.println("Norint sugryzti i menu spauskite - y");
         System.out.println("Programos sustabdymui spauskite - n");
@@ -102,6 +110,7 @@ public class Ralis {
     // 3. Paieska pagal marke ir modeli
     // ##########################
     public static ArrayList<Masina> paieskaMarkeModelis(String returnList) {
+        System.out.println("");
         System.out.println("Iveskite masinos marke:");
         String masinosMarke = scanner.nextLine();
         System.out.println("Iveskite masinos modeli:");
@@ -110,7 +119,8 @@ public class Ralis {
         ArrayList<Masina> atrinktosMasinos = new ArrayList<>();
 
         for (Masina masina : masinuSarasas) {
-            if (masina.getMarke().contains(masinosMarke) && masina.getModelis().contains(masinosModelis)) {
+            if (masina.getMarke().contains(masinosMarke) &&
+                    masina.getModelis().contains(masinosModelis)) {
                 atrinktosMasinos.add(masina);
             }
         }
@@ -118,18 +128,21 @@ public class Ralis {
         if (!returnList.equals("returnList")) {
             if (!atrinktosMasinos.isEmpty()) {
                 for (Masina masina : atrinktosMasinos) {
-                    System.out.println(masina);
-
-                    System.out.println("Norint sugryzti i menu spauskite - y");
-                    System.out.println("Programos sustabdymui spauskite - n");
-                    System.out.println("Programos sustabdymui spauskite - n");
-                    String ivestis = scanner.nextLine();
-                    if (ivestis.equals("y")) {
-                        menu();
-                    }
+                    System.out.println("\nPaieskos rezultai:");
+                    System.out.println(masina + "\n");
                 }
             } else {
-                System.out.println("Nera tokios masinos pagal ivesta marke ir modeli!");
+                System.out.println("\nNera tokios masinos pagal ivesta marke ir modeli!\n");
+            }
+
+            System.out.println("Jeigu norite atlikti paieska is naujo spauskite - r");
+            System.out.println("Norint sugryzti i menu spauskite - y");
+            System.out.println("Programos sustabdymui spauskite - n");
+            String ivestis = scanner.nextLine();
+            if (ivestis.equals("r")) {
+                paieskaMarkeModelis("");
+            } else if (ivestis.equals("y")) {
+                menu();
             }
         }
 
@@ -153,10 +166,21 @@ public class Ralis {
 
         if (!atrinktosMasinosSuGreiciu.isEmpty()) {
             for (Masina masina : atrinktosMasinosSuGreiciu) {
-                System.out.println(masina);
+                System.out.println("\nPaieskos rezultatai:");
+                System.out.println(masina + "\n");
             }
         } else {
             System.out.println("Nera tokios masinos pagal ivesta marke, modeli bei max greiti!");
+        }
+
+        System.out.println("Jeigu norite atlikti paieska is naujo spauskite - r");
+        System.out.println("Norint sugryzti i menu spauskite - y");
+        System.out.println("Programos sustabdymui spauskite - n");
+        String ivestis = scanner.nextLine();
+        if (ivestis.equals("r")) {
+            paieskaMarkeModelisGreitis();
+        } else if (ivestis.equals("y")) {
+            menu();
         }
     }
 
@@ -176,6 +200,13 @@ public class Ralis {
         System.out.println("Sarasas isrikiuotas pagal marke ir maksimalu greiti:");
         for (Masina masina : masinuSarasas) {
             System.out.println(masina);
+        }
+
+        System.out.println("Norint sugryzti i menu spauskite - y");
+        System.out.println("Programos sustabdymui spauskite - n");
+        String ivestis = scanner.nextLine();
+        if (ivestis.equals("y")) {
+            menu();
         }
     }
 
