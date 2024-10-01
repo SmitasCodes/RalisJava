@@ -14,11 +14,14 @@ public class Ralis {
 
         failoNuskaitymas();
         System.out.println("Sveiki atvyke y \"Ralis\" programa!");
-        System.out.println("Programos funkciju sarasas yra sis:");
-        System.out.println("1: Masinu saraso nuskaitymas ir parodymas");
-        System.out.println("2: Vidutinis visu automobiliu varikliu turio skaiciavimas");
+        System.out.println("Programos funkciju meniu yra sis:");
+        System.out.println("1: Masinu saraso nuskaitymas ir parodymas.");
+        System.out.println("2: Vidutinis visu automobiliu varikliu turio skaiciavimas.");
+        System.out.println("3: Paieska pagal marke ir modeli.");
+        System.out.println("4: Paieska pagal marke, modeli bei maksimalu greiti.");
+        System.out.println("5: Saraso rikiavimas pagal marke ir maksimalu greiti.");
 
-        System.out.println("Prasome pasirinkti norima funkcija ivedus numeriuka nuo 1 iki 5");
+        System.out.println("\nPrasome pasirinkti norima funkcija ivedus numeriuka nuo 1 iki 5");
         int pasirinkimas = Integer.valueOf(scanner.nextLine());
 
         switch (pasirinkimas) {
@@ -159,48 +162,3 @@ public class Ralis {
 
 }
 
-class Masina {
-    private String marke;
-    private String modelis;
-    private double turis;
-    private int maxGreitis;
-
-    private static ArrayList<Masina> masinuSarasas = new ArrayList<>();
-
-    // Declare fields for the Masinos class
-    public Masina(String marke, String modelis, double turis, int maxGreitis) {
-        this.marke = marke;
-        this.modelis = modelis;
-        this.turis = turis;
-        this.maxGreitis = maxGreitis;
-        masinuSarasas.add(this);
-    }
-
-    public String getMarke() {
-        return marke;
-    }
-
-    public String getModelis() {
-        return modelis;
-    }
-
-    public int getMaxGreitis() {
-        return maxGreitis;
-    }
-
-    public double getTuris() {
-        return turis;
-    }
-
-    public static ArrayList<Masina> gautiMasinuSarasa() {
-        return masinuSarasas;
-    }
-
-    // Pakeiciamas toString metodas, kad butu gaunama informacija apie automobilius
-    // is objektu
-    @Override
-    public String toString() {
-        return String.format("Marke: %s, Modelis: %s, Turis: %.1fL, Max Greitis: %d km/h",
-                marke, modelis, turis, maxGreitis);
-    }
-}
