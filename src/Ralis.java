@@ -29,8 +29,10 @@ public class Ralis {
                 vidutinioTurioSkaiciavimas();
                 break;
             case 3:
-                masinuPaieska();
+                paieskaMarkeModelis("");
                 break;
+            case 4:
+                paieskaMarkeModelisGreitis();
         }
     }
 
@@ -83,17 +85,36 @@ public class Ralis {
     // ##########################
     // 3. Paieska pagal marke ir modeli
     // ##########################
-    public static void masinuPaieska() {
+    public static ArrayList<Masina> paieskaMarkeModelis(String returnList) {
         System.out.println("Iveskite masinos marke:");
+        String masinosMarke = scanner.nextLine();
+        System.out.println("Iveskite masinos modeli:");
         String masinosModelis = scanner.nextLine();
-        System.out.println();
+
+        ArrayList<Masina> atrinktosMasinos = new ArrayList<>();
+
+        for (Masina masina : masinuSarasas) {
+            if (masina.marke.contains(masinosMarke)) {
+                if (masina.modelis.contains(masinosModelis)) {
+                    atrinktosMasinos.add(masina);
+                }
+            }
+        }
+
+        if (!returnList.equals("returnList")) {
+            for (Masina masina : atrinktosMasinos) {
+                System.out.println(masina);
+            }
+        }
+
+        return atrinktosMasinos;
     }
 
 }
 
 class Masina {
-    private String marke;
-    private String modelis;
+    public String marke;
+    public String modelis;
     public double turis;
     private int maxGreitis;
 
