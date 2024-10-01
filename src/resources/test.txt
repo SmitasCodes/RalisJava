@@ -1,9 +1,5 @@
-BMW, 330i, 2.0, 255
 BMW, M3, 3.0, 290
-BMW, X5 xDrive40i, 3.0, 243
-Audi, A4 40 TFSI, 2.0, 241
-Audi, RS6 Avant, 4.0, 305
-Audi, Q7 55 TFSI, 3.0, 250
-Mercedes-Benz, C300, 2.0, 250
-Mercedes-Benz, E63 AMG, 4.0, 300
-Mercedes-Benz, GLE 450, 3.0, 245
+BMW, M3, 3.0, 285
+BMW, M3, 3.0, 280
+BMW, M3, 4.0, 290
+BMW, M3, 5.0, 290

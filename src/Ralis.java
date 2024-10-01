@@ -102,12 +102,40 @@ public class Ralis {
         }
 
         if (!returnList.equals("returnList")) {
-            for (Masina masina : atrinktosMasinos) {
-                System.out.println(masina);
+            if (!atrinktosMasinos.isEmpty()) {
+                for (Masina masina : atrinktosMasinos) {
+                    System.out.println(masina);
+                }
+            } else {
+                System.out.println("Nera tokios masinos pagal ivesta marke ir modeli!");
             }
         }
 
         return atrinktosMasinos;
+    }
+
+    // ##########################
+    // 4. Paieska pagal marke, modeli ir max greiti
+    // ##########################
+    public static void paieskaMarkeModelisGreitis() {
+        ArrayList<Masina> atrinktosMasinos = paieskaMarkeModelis("returnList");
+        ArrayList<Masina> atrinktosMasinosSuGreiciu = new ArrayList<>();
+        System.out.println("Iveskite masinos max greiti:");
+        int maxGreitis = Integer.valueOf(scanner.nextLine());
+
+        for (Masina masina : atrinktosMasinos) {
+            if (maxGreitis == masina.maxGreitis) {
+                atrinktosMasinosSuGreiciu.add(masina);
+            }
+        }
+
+        if (!atrinktosMasinosSuGreiciu.isEmpty()) {
+            for (Masina masina : atrinktosMasinosSuGreiciu) {
+                System.out.println(masina);
+            }
+        } else {
+            System.out.println("Nera tokios masinos pagal ivesta marke, modeli bei max greiti!");
+        }
     }
 
 }
@@ -116,7 +144,7 @@ class Masina {
     public String marke;
     public String modelis;
     public double turis;
-    private int maxGreitis;
+    public int maxGreitis;
 
     private static ArrayList<Masina> masinuSarasas = new ArrayList<>();
 
