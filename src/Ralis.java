@@ -16,6 +16,8 @@ public class Ralis {
         menu();
     }
 
+    static ArrayList<Masina> masinuSarasas = Masina.gautiMasinuSarasa();
+
     // Menu funkcija
     public static void menu() {
         System.out.println("\nProgramos funkciju meniu yra sis:");
@@ -45,19 +47,24 @@ public class Ralis {
         }
     }
 
-    // Funkcija skirta pasirinkti tolimesni veiksma po ralio funkciju ivykdymo
-    public static void veiksmoPasirinkimas( ) {
+    // Funkcija skirta pasirinkti tolimesni veiksma po menu funkciju ivykdymo
+    public static void veiksmoPasirinkimas(String funkcijosTipas) {
+        if (funkcijosTipas.equals("funkcijaMarkeModelis") || funkcijosTipas.equals("funkcijaMarkeModelisGreitis")) {
+            System.out.println("Jeigu norite atlikti paieska is naujo spauskite - r");
+        }
         System.out.println("Norint sugryzti i menu spauskite - y");
         System.out.println("Programos sustabdymui spauskite - n");
         String ivestis = scanner.nextLine();
-        if (ivestis.equals("y")) {
+        if (ivestis.equals("r") && funkcijosTipas.equals("funkcijaMarkeModelis")) {
+            paieskaMarkeModelis("");
+        } else if (ivestis.equals("r") && funkcijosTipas.equals("funkcijaMarkeModelisGreitis")) {
+            paieskaMarkeModelisGreitis();
+        } else if (ivestis.equals("y")) {
             menu();
         }
     }
 
-    // ##########################
     // Failo nuskaitymo funkcija
-    // ##########################
     protected static void failoNuskaitymas() {
         InputStream inputStream = Ralis.class.getResourceAsStream("/resources/test.txt");
         try (BufferedReader br = new BufferedReader(new InputStreamReader(inputStream))) {
@@ -72,8 +79,6 @@ public class Ralis {
         }
     }
 
-    static ArrayList<Masina> masinuSarasas = Masina.gautiMasinuSarasa();
-
     // ##########################
     // 1. Saraso spausdinimas
     // ##########################
@@ -83,7 +88,7 @@ public class Ralis {
             System.out.println(masina);
         }
         System.out.println("");
-        veiksmoPasirinkimas();
+        veiksmoPasirinkimas("funkcijaBeIvedimo");
     }
 
     // ##########################
@@ -104,7 +109,7 @@ public class Ralis {
                 .println("\nBendras visu masinu vidutinis turis yra: " + skaiciausFormatas.format(vidutinisTuris)
                         + "l\n");
 
-        veiksmoPasirinkimas();
+        veiksmoPasirinkimas("funkcijaBeIvedimo");
     }
 
     // ##########################
@@ -136,15 +141,7 @@ public class Ralis {
                 System.out.println("\nNera tokios masinos pagal ivesta marke ir modeli!\n");
             }
 
-            System.out.println("Jeigu norite atlikti paieska is naujo spauskite - r");
-            System.out.println("Norint sugryzti i menu spauskite - y");
-            System.out.println("Programos sustabdymui spauskite - n");
-            String ivestis = scanner.nextLine();
-            if (ivestis.equals("r")) {
-                paieskaMarkeModelis("");
-            } else if (ivestis.equals("y")) {
-                menu();
-            }
+            veiksmoPasirinkimas("funkcijaMarkeModelis");
         }
 
         return atrinktosMasinos;
@@ -174,15 +171,7 @@ public class Ralis {
             System.out.println("Nera tokios masinos pagal ivesta marke, modeli bei max greiti!");
         }
 
-        System.out.println("Jeigu norite atlikti paieska is naujo spauskite - r");
-        System.out.println("Norint sugryzti i menu spauskite - y");
-        System.out.println("Programos sustabdymui spauskite - n");
-        String ivestis = scanner.nextLine();
-        if (ivestis.equals("r")) {
-            paieskaMarkeModelisGreitis();
-        } else if (ivestis.equals("y")) {
-            menu();
-        }
+        veiksmoPasirinkimas("funkcijaMarkeModelisGreitis");
     }
 
     // ##########################
