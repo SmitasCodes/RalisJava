@@ -16,6 +16,7 @@ public class Ralis {
         menu();
     }
 
+    // Menu funkcija
     public static void menu() {
         System.out.println("\nProgramos funkciju meniu yra sis:");
         System.out.println("1: Masinu saraso nuskaitymas ir parodymas.");
@@ -41,6 +42,16 @@ public class Ralis {
                 paieskaMarkeModelisGreitis();
             case 5:
                 sarasoRikiavimas();
+        }
+    }
+
+    // Funkcija skirta pasirinkti tolimesni veiksma po ralio funkciju ivykdymo
+    public static void veiksmoPasirinkimas( ) {
+        System.out.println("Norint sugryzti i menu spauskite - y");
+        System.out.println("Programos sustabdymui spauskite - n");
+        String ivestis = scanner.nextLine();
+        if (ivestis.equals("y")) {
+            menu();
         }
     }
 
@@ -72,13 +83,7 @@ public class Ralis {
             System.out.println(masina);
         }
         System.out.println("");
-
-        System.out.println("Norint sugryzti i menu spauskite - y");
-        System.out.println("Programos sustabdymui spauskite - n");
-        String ivestis = scanner.nextLine();
-        if (ivestis.equals("y")) {
-            menu();
-        }
+        veiksmoPasirinkimas();
     }
 
     // ##########################
@@ -96,14 +101,10 @@ public class Ralis {
         DecimalFormat skaiciausFormatas = new DecimalFormat("#.00");
 
         System.out
-                .println("\nBendras visu masinu vidutinis turis yra: " + skaiciausFormatas.format(vidutinisTuris) + "l\n");
+                .println("\nBendras visu masinu vidutinis turis yra: " + skaiciausFormatas.format(vidutinisTuris)
+                        + "l\n");
 
-        System.out.println("Norint sugryzti i menu spauskite - y");
-        System.out.println("Programos sustabdymui spauskite - n");
-        String ivestis = scanner.nextLine();
-        if (ivestis.equals("y")) {
-            menu();
-        }
+        veiksmoPasirinkimas();
     }
 
     // ##########################
