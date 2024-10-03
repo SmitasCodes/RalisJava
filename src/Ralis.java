@@ -40,8 +40,10 @@ public class Ralis {
                         break;
                     case 4:
                         paieskaMarkeModelisGreitis();
+                        break;
                     case 5:
                         sarasoRikiavimas();
+                        break;
                     default:
                         System.out.println("Neteisingas pasirinkimas, bandykite dar karta");
                         menu();
@@ -70,7 +72,7 @@ public class Ralis {
             paieskaMarkeModelisGreitis();
         } else if (ivestis.equals("y")) {
             menu();
-        }
+        } 
     }
 
     // Failo nuskaitymo funkcija
@@ -208,7 +210,7 @@ public class Ralis {
         ArrayList<Masina> masinuSarasasRikiavimui = new ArrayList<>(masinuSarasas);
         System.out.println("\nPasirinkite rikiavimo kriteriju:");
         System.out.println("1 - Rikiuoti pagal Marke");
-        System.out.println("2 - Rikiuo5ti pagal Maksimalu Greiti");
+        System.out.println("2 - Rikiuoti pagal Maksimalu Greiti");
         System.out.println("3 - Rikiuoti pagal Marke ir Maksimalu Greiti\n");
 
         String pasirinkimas = scanner.nextLine();
