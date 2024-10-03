@@ -161,10 +161,11 @@ public class Ralis {
 
         if (!sarasoGrazinimas.equals("sarasoGrazinimas")) {
             if (!atrinktosMasinos.isEmpty()) {
+                System.out.println("\nPaieskos rezultai:");
                 for (Masina masina : atrinktosMasinos) {
-                    System.out.println("\nPaieskos rezultai:");
-                    System.out.println(masina + "\n");
+                    System.out.println(masina);
                 }
+                System.out.println("");
             } else {
                 System.out.println("\nNera tokios masinos pagal ivesta marke ir modeli!\n");
             }
