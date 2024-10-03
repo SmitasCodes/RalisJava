@@ -19,11 +19,11 @@ public class Ralis {
     // Menu funkcija
     public static void menu() {
         System.out.println("\nProgramos funkciju meniu yra sis:");
-        System.out.println("1: Masinu saraso nuskaitymas ir parodymas.");
-        System.out.println("2: Vidutinis visu automobiliu varikliu turio skaiciavimas.");
-        System.out.println("3: Paieska pagal marke ir modeli.");
-        System.out.println("4: Paieska pagal marke, modeli bei maksimalu greiti.");
-        System.out.println("5: Saraso rikiavimas pagal marke ir maksimalu greiti.");
+        System.out.println("1 - Masinu saraso nuskaitymas ir parodymas.");
+        System.out.println("2 - Vidutinis visu automobiliu varikliu turio skaiciavimas.");
+        System.out.println("3 - Paieska pagal marke ir modeli.");
+        System.out.println("4 - Paieska pagal marke, modeli bei maksimalu greiti.");
+        System.out.println("5 - Saraso rikiavimas pagal marke ir maksimalu greiti.");
         System.out.println("\nPrasome pasirinkti norima funkcija ivedus numeriuka nuo 1 iki 5");
         while (true) {
             try {
@@ -205,26 +205,44 @@ public class Ralis {
     // 5. Saraso rikiavimas pagal marke ir maksimalu greiti
     // ##########################
     public static void sarasoRikiavimas() {
-        masinuSarasas.sort((m1, m2) -> {
-            int markeCompare = m2.getMarke().compareTo(m1.getMarke());
-            if (markeCompare != 0) {
-                return markeCompare;
-            } else {
-                return Integer.compare(m2.getMaxGreitis(), m1.getMaxGreitis());
-            }
-        });
+        ArrayList<Masina> masinuSarasasRikiavimui = new ArrayList<>(masinuSarasas);
+        System.out.println("\nPasirinkite rikiavimo kriteriju:");
+        System.out.println("1 - Rikiuoti pagal Marke");
+        System.out.println("2 - Rikiuo5ti pagal Maksimalu Greiti");
+        System.out.println("3 - Rikiuoti pagal Marke ir Maksimalu Greiti\n");
 
-        System.out.println("Sarasas isrikiuotas pagal marke ir maksimalu greiti:");
-        for (Masina masina : masinuSarasas) {
+        String pasirinkimas = scanner.nextLine();
+
+        switch (pasirinkimas) {
+            case "1":
+                masinuSarasasRikiavimui.sort((m1, m2) -> m1.getMarke().compareTo(m2.getMarke()));
+                break;
+            case "2":
+                masinuSarasasRikiavimui.sort((m1, m2) -> Integer.compare(m2.getMaxGreitis(), m1.getMaxGreitis()));
+                break;
+            case "3":
+                masinuSarasasRikiavimui.sort((m1, m2) -> {
+                    int markeCompare = m1.getMarke().compareTo(m2.getMarke());
+                    if (markeCompare != 0) {
+                        return markeCompare;
+                    } else {
+                        return Integer.compare(m2.getMaxGreitis(), m1.getMaxGreitis());
+                    }
+                });
+                break;
+            default:
+                System.out.println("Neteisingas pasirinkimas.");
+                return;
+        }
+
+        System.out.println("");
+        for (Masina masina : masinuSarasasRikiavimui) {
             System.out.println(masina);
         }
+        System.out.println("");
 
-        System.out.println("Norint sugryzti i menu spauskite - y");
-        System.out.println("Programos sustabdymui spauskite - n");
-        String ivestis = scanner.nextLine();
-        if (ivestis.equals("y")) {
-            menu();
-        }
+        veiksmoPasirinkimas("funkcijaBeIvedimo");
+
     }
 
 }
