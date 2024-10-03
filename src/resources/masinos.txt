@@ -6,9 +6,4 @@ Audi, Q7 55 TFSI, 3.0, 250
 Mercedes-Benz, GLE 450, 3.0, 245
 BMW, X5 xDrive40i, 3.0, 243
 Mercedes-Benz, E63 AMG, 4.0, 300
-Mercedes-Benz, E63 AMG, 4.0, 300
-Mercedes-Benz, E63 AMG, 4.0, 300
-Mercedes-Benz, E63 AMG, 4.0, 300
-Mercedes-Benz, E63 AMG, 4.0, 300
-Mercedes-Benz, E63 AMG, 4.0, 300
 BMW, M3, 3.0, 290

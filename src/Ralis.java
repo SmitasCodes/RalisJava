@@ -58,7 +58,7 @@ public class Ralis {
 
     private static ArrayList<Masina> masinuSarasas = Masina.gautiMasinuSarasa();
 
-    // Funkcija skirta pasirinkti tolimesni veiksma po menu funkciju ivykdymo
+    // Funkcija skirta pasirinkti tolimesni veiksma po funkciju ivykdymo
     public static void veiksmoPasirinkimas(String funkcijosTipas) {
         if (funkcijosTipas.equals("funkcijaMarkeModelis") || funkcijosTipas.equals("funkcijaMarkeModelisGreitis")) {
             System.out.println("Jeigu norite atlikti paieska is naujo spauskite - r");
@@ -77,7 +77,7 @@ public class Ralis {
 
     // Failo nuskaitymo funkcija
     public static void failoNuskaitymas() {
-        InputStream inputStream = Ralis.class.getResourceAsStream("/resources/test.txt");
+        InputStream inputStream = Ralis.class.getResourceAsStream("/resources/masinos.txt");
         try (BufferedReader br = new BufferedReader(new InputStreamReader(inputStream))) {
             String eilute;
             while ((eilute = br.readLine()) != null) {
@@ -126,7 +126,7 @@ public class Ralis {
     // ##########################
     // 3. Paieska pagal marke ir modeli
     // ##########################
-    public static ArrayList<Masina> paieskaMarkeModelis(String returnList) {
+    public static ArrayList<Masina> paieskaMarkeModelis(String sarasoGrazinimas) {
         System.out.println("");
         System.out.println("Iveskite masinos marke:");
         String masinosMarke = scanner.nextLine();
@@ -159,7 +159,7 @@ public class Ralis {
             }
         }
 
-        if (!returnList.equals("returnList")) {
+        if (!sarasoGrazinimas.equals("sarasoGrazinimas")) {
             if (!atrinktosMasinos.isEmpty()) {
                 for (Masina masina : atrinktosMasinos) {
                     System.out.println("\nPaieskos rezultai:");
@@ -179,7 +179,7 @@ public class Ralis {
     // 4. Paieska pagal marke, modeli ir max greiti
     // ##########################
     public static void paieskaMarkeModelisGreitis() {
-        ArrayList<Masina> atrinktosMasinos = paieskaMarkeModelis("returnList");
+        ArrayList<Masina> atrinktosMasinos = paieskaMarkeModelis("sarasoGrazinimas");
         ArrayList<Masina> atrinktosMasinosSuGreiciu = new ArrayList<>();
         System.out.println("Iveskite masinos max greiti:");
         int maxGreitis = Integer.valueOf(scanner.nextLine());
@@ -187,7 +187,7 @@ public class Ralis {
         for (Masina masina : atrinktosMasinos) {
             if (masina.getMaxGreitis() == maxGreitis) {
                 atrinktosMasinosSuGreiciu.add(masina);
-            }
+            } 
         }
 
         if (!atrinktosMasinosSuGreiciu.isEmpty()) {
@@ -204,7 +204,7 @@ public class Ralis {
     }
 
     // ##########################
-    // 5. Saraso rikiavimas pagal marke ir maksimalu greiti
+    // 5. Saraso rikiavimas pagal marke / greiti / marke + greiti
     // ##########################
     public static void sarasoRikiavimas() {
         ArrayList<Masina> masinuSarasasRikiavimui = new ArrayList<>(masinuSarasas);
